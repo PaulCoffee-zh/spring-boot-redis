@@ -1,0 +1,14 @@
+spring: 
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  redis:
+    cluster:
+       max-redirects: 2
+       nodes: 192.168.83.51:6379,192.168.83.52:6379,192.168.83.53:6379,192.168.83.51:6378,192.168.83.52:6378,192.168.83.53:6378
+  
+server:
+  port: 8182
+  session:
+    timeout: 1800

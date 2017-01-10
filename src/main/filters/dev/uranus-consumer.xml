@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        ">
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="dev-cube" />
+
+	<!-- 使用zookeeper注册中心暴露服务地址 -->
+	<dubbo:registry protocol="zookeeper" address="192.168.83.20:2181" />
+
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="11882" />
+
+	<!-- 启动时检查提供者是否存在，true报错，false忽略 -->
+	<dubbo:consumer check="false" />
+
+	<!-- 延迟注册服务时间(毫秒)- ，设为-1时，表示延迟到Spring容器初始化完成时暴露服务 ; -->
+	<!-- 远程服务调用重试次数，不包括第一次调用，不需要重试请设为0 -->
+	<dubbo:provider delay="-1" timeout="60000" retries="0" />
+	<dubbo:reference id="authorityRecordApiService"
+		interface="com.akcomejf.uranus.service.AuthorityRecordApiService"
+		group="Development" version="1.1.2" />
+
+	<dubbo:reference id="userApiService"
+		interface="com.akcomejf.uranus.service.UserApiService" group="Development"
+		version="1.1.2" />
+
+	<dubbo:reference id="roleApiService"
+		interface="com.akcomejf.uranus.service.RoleApiService" group="Development"
+		version="1.1.2" />
+
+	<dubbo:reference id="menuApiService"
+		interface="com.akcomejf.uranus.service.MenuApiService" group="Development"
+		version="1.1.2" />
+
+	<dubbo:reference id="resourceApiService"
+		interface="com.akcomejf.uranus.service.ResourceApiService" group="Development"
+		version="1.1.2" />
+
+	<dubbo:reference id="dimServiceImpl"
+		interface="com.akcomejf.uranus.service.DimApiService" group="Development"
+		version="1.1.2" />
+
+	<dubbo:reference id="sysConfigApiServiceImpl"
+		interface="com.akcomejf.uranus.service.SysConfigApiService" group="Development"
+		version="1.1.2" />
+</beans>
