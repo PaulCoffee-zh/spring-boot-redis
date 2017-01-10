@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        ">
+    <dubbo:reference id="authorityRecordApiService"
+                     interface="com.akcomejf.uranus.service.AuthorityRecordApiService" group="Emperor_sdd"
+                     version="1.1.2"/>
+
+    <dubbo:reference id="userApiService"
+                     interface="com.akcomejf.uranus.service.UserApiService" group="Emperor_sdd"
+                     version="1.1.2"/>
+
+    <dubbo:reference id="roleApiService"
+                     interface="com.akcomejf.uranus.service.RoleApiService" group="Emperor_sdd"
+                     version="1.1.2"/>
+
+    <dubbo:reference id="menuApiService"
+                     interface="com.akcomejf.uranus.service.MenuApiService" group="Emperor_sdd"
+                     version="1.1.2"/>
+
+    <dubbo:reference id="resourceApiService"
+                     interface="com.akcomejf.uranus.service.ResourceApiService" group="Emperor_sdd"
+                     version="1.1.2"/>
+
+    <dubbo:reference id="dimServiceImpl"
+                     interface="com.akcomejf.uranus.service.DimApiService" group="Emperor_sdd"
+                     version="1.1.2"/>
+
+    <dubbo:reference id="sysConfigApiServiceImpl"
+                     interface="com.akcomejf.uranus.service.SysConfigApiService" group="Emperor_sdd"
+                     version="1.1.2"/>
+</beans>
