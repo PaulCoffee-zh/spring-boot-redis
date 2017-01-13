@@ -1,0 +1,291 @@
+@CHARSET "UTF-8";
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td { margin: 0; padding: 0; border: 0;}
+html { color: #000; }
+html,body { height: 100%; }
+body,button,input,select,textarea { font-size: 12px; font-family: 'Microsoft Yahei','微软雅黑', \5FAE\8F6F\96C5\9ED1,'宋体',\5b8b\4f53,arial,'Hiragino Sans GB',Tahoma,Arial,Helvetica; }
+ul,ol,li,dl,dd,dt{list-style: none;}
+em { font-style: normal; }
+a { text-decoration: none;cursor: pointer;}
+a:hover { text-decoration: none; }
+legend { color: #000; }
+fieldset,img { border: 0; }
+label,button { cursor: pointer; }
+
+/*解决IE图片缩放失真*/
+img { -ms-interpolation-mode: bicubic; }
+/*清除浮动*/
+.clearfix:after { content: ''; display: block; height: 0; clear: both; }
+.clearfix { zoom: 1; }
+.clear { clear: both; }
+/*连续英文、数字换行*/
+.wordwrap { word-break: break-all; word-wrap: break-word; }
+/*单行文字超出显示省略号*/
+.omg{overflow: hidden; text-overflow: ellipsis; white-space:nowrap;}
+/*左右浮动*/
+.left{float: left;}
+.right{float: right;}
+/*居中*/
+.textCenter{text-align: center;}
+.marginAuto{margin: 0 auto;}
+/*解决文本框点击有蓝色线框*/
+input,button{
+	outline: none;
+}
+
+.ysmf-mainWrap{
+	width: 100%;
+	overflow-x: hidden;
+	position: relative;
+}
+.ysmf-mainWrap .sideNav{
+	width: 16%;
+	height: 930px;
+	background-color: #191A2C;
+	padding:0;
+	position: relative;
+}
+.ysmf-mainWrap .mainContent{
+	width:84%;
+/*	height: 1288px;*/
+	background-color: #191a2c;
+}
+.ysmf-mainWrap .mainContent .Nav{
+	width: 100%;
+	height: 60px;
+	background-color: #191A2C;
+	line-height: 60px;
+}
+.ysmf-mainWrap .mainContent .Nav .NavList li{
+	float: left;
+	margin-right: 50px;
+	color:#7f96a3;
+	font-size: 16px;
+	height: 60px;
+}
+.ysmf-mainWrap .mainContent .Nav .userName{
+	color: #FFFFFF;
+	font-size: 12px;
+	margin-right: 55px;
+	height: 60px;
+}
+.ysmf-mainWrap .sideNav h1{
+	font-size: 32px;
+	color: #a3a3aa;
+	padding-left: 35px;
+	height: 60px;
+	line-height: 60px;
+}
+.ysmf-mainWrap .sideNav .navListOne a,.ysmf-mainWrap .sideNav .navListTwo a{
+	display: block;
+	height: 52px;
+	line-height: 52px;
+	color:#fbfbfb;
+	font-size: 14px;
+	padding-left: 20px;
+}
+.ysmf-mainWrap .sideNav .navListOne a{
+	/*background:url(../images/arrow.png) left center no-repeat;	*/
+}
+.ysmf-mainWrap .sideNav .filter .navListTwo{
+	display: none;
+
+}
+.ysmf-mainWrap .sideNav .navListTwo li{
+	padding-left:30px;
+}
+.ysmf-mainWrap .sideNav .navListTwo li:hover{
+	background-color:#24273e;
+}
+.ysmf-mainWrap .sideNav .filter.current .navListOne a{
+	background-color:#00a2ca;	
+}
+
+/*.ysmf-mainWrap .sideNav .filter.current .navListTwo{
+	display: block;
+}*/
+.ysmf-mainWrap .mainContent .prefilter{
+	width: 100%;
+	height: 94px;
+/*	border-bottom: 1px solid #e4ebf1;*/
+	padding: 15px 0 0 18px;
+	background-color:#24273e;
+}
+.ysmf-mainWrap .mainContent .prefilter h2{
+	font-size: 18px;
+	color: #232d33;
+	margin-bottom: 10px;
+}
+.ysmf-mainWrap .mainContent .prefilter .item1{
+	display: inline-block;
+	width: 28%;
+}
+.ysmf-mainWrap .mainContent .prefilter .item1 span{
+	margin-right:5%;
+	color:#babac0;
+}
+.ysmf-mainWrap .mainContent .prefilter .item1 input{
+	width: 60%;
+	height: 30px;
+	border:1px solid #edf1fc;
+	text-indent: 1em;
+	border-radius: 3px;
+}
+.ysmf-mainWrap .mainContent .prefilter .searchBtn{
+	background-color: transparent;
+	border: 1px solid #5484e1;
+	color: #babac0;
+	width: 6%;
+	height: 32px;
+}
+.tabItem .tabItemList{
+	height: 58px;
+	line-height: 58px;
+	font-size:18px;	
+	background-color:#24273e;	
+}
+.tabItem .tabItemList li{
+	float: left;
+	width: 80px;
+	margin-left: 70px;
+	color: #babac0;
+	cursor: pointer;
+	text-align: center;
+}
+.tabItem .tabItemList li.active{
+	/*color: #babac0;*/
+	color:#00a2ca;
+	border-bottom: 3px solid #00a2ca;
+}
+.contentBox .contentBox-list{
+	display: none;
+	
+}
+.contentBox .charBox-list,.contentBox .listBox-list{
+
+	padding: 15px 0;
+	background-color: #191a2c;	
+}
+.contentBox .contentBox-list.contentShow{
+	display: block;
+}
+
+.contentBox .charBox-list .topBox{
+	height: 693px;
+	margin-bottom: 12px;
+}
+.contentBox .charBox-list .footerBox{
+	height: 335px;
+}
+.contentBox .charBox-list .footerBox .footerBoxLeft{
+	width: 49%;
+	margin-right: 1%;
+/*	border: 1px solid #e3eaf0;*/
+	height: 100%;
+	background-color:#24273e;
+}
+.contentBox .charBox-list .footerBox .footerBoxRight{
+	width: 49%;
+/*	border: 1px solid #e3eaf0;	*/
+	height: 100%;
+	background-color:#24273e;
+}
+.contentBox .charBox-list .topBox .sidebarNum{
+	width: 18%;
+	height: 100%;
+	margin-right: 10px;
+}
+.contentBox .charBox-list .topBox .sidebarNum .numItemList{
+	height: 100%;
+	text-align: center;
+}
+.contentBox .charBox-list .topBox .sidebarNum .numItemList li{
+	width: 100%;
+	height:165px;
+	margin-bottom:10px;
+/*	border: 1px solid #e3eaf0;*/
+	background-color: #24273e;
+
+}
+.contentBox .charBox-list .topBox .sidebarNum .numItemList li h3{
+	height: 48px;
+	border-bottom: 1px solid #191a2c;
+	line-height: 48px;
+	background-color:#24273e;
+	color:#7f96a3;
+	font-weight: normal;
+}
+.contentBox .charBox-list .topBox .sidebarNum .numItemList li .numDesc{
+/*	padding: 12px 5px;*/
+	margin:12px 5px;
+	background-color: #24273e;
+		
+}
+.contentBox .charBox-list .topBox .sidebarNum .numItemList li .numDesc span{
+	margin-bottom: 10px;
+	display: block;
+	font-size: 28px;
+	color: #fbfbfb;
+}
+.contentBox .charBox-list .topBox .sidebarNum .numItemList li .numDesc p{
+	color: #597a96;
+	font-size: 12px;
+	cursor: pointer;
+	max-width:150px;
+    margin: 0 auto;
+}
+.contentBox .charBox-list .topBox .sidebarNum .numItemList li:last-child{
+	margin-bottom: 0;
+}
+.contentBox .charBox-list .topBox .mainChart{
+	width: 80%;
+	height: 100%;
+}
+.mainChart .mainChartTop{
+	height: 49%;
+/*	margin-bottom: 10px;	*/
+}
+.mainChart .mainChartDown{
+	height: 49%;
+	background-color:#24273e;
+	margin-bottom: 10px;
+}
+.mainChart .mainChartTop .ChartTopOne{
+	width: 49.5%;
+	margin-right:0;
+	height: 100%;
+	background-color: #24273e;
+	/*border: 1px solid #e3eaf0;*/
+	
+}
+.mainChart .mainChartTop .ChartTopOne h4,.mainChart .mainChartTop .ChartTopTwo h4,
+.mainChart .mainChartDown h4,.footerBox .footerBoxLeft h4,.footerBox .footerBoxRight h4{
+	/*height: 50px;
+	line-height: 50px;*/
+	height: 15%;
+	line-height:51px;
+	margin-left: 20px;
+	color: #78909c;
+	font-size: 16px;
+	font-weight: normal;
+}
+.mainChart .mainChartTop .ChartTopOne .chartArea,.mainChart .mainChartTop .ChartTopTwo .chartArea,
+.mainChart .mainChartDown .chartArea,.footerBox .footerBoxLeft .chartArea,.footerBox .footerBoxRight .chartArea{
+	height:100%;
+}
+.mainChart .mainChartTop .ChartTopTwo{
+	width: 49.5%;
+	height: 100%;
+	background-color:#24273e;
+	/*border: 1px solid #e3eaf0;*/
+}
+.copyRight{
+	position:absolute;
+	bottom: 5px;
+	text-align: center;
+	color: #7f96a3;
+	width: 50%;
+	left: 50%;
+	margin-left: -25%;
+	font-size: 14px;
+	
+}
