@@ -2,8 +2,6 @@ package com.akcomejf.cube.domain;
 
 import java.io.Serializable;
 
-import com.akcomejf.cube.enums.ChannelTypeEnum;
-
 public class ChartRegEntity implements Serializable {
 
 	/**
@@ -22,6 +20,18 @@ public class ChartRegEntity implements Serializable {
 	
 	/***/
 	private String rowKey;
+	
+	
+	/** 活动代码  */
+	private String activitySource;
+	
+	public String getActivitySource() {
+		return activitySource;
+	}
+
+	public void setActivitySource(String activitySource) {
+		this.activitySource = activitySource;
+	}
 
 	public String getRowKey() {
 		return rowKey;
@@ -32,7 +42,7 @@ public class ChartRegEntity implements Serializable {
 	}
 
 	public String getYearMonDay() {
-		return "sxq";
+		return yearMonDay;
 	}
 
 	public void setYearMonDay(String yearMonDay) {

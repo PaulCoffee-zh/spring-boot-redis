@@ -1,11 +1,9 @@
 $('.filter').mouseover(function() {
 	$(this).children('.navListTwo').stop().slideDown();
+	$(this).siblings('.filter').children('.navListTwo').stop().slideUp();
 	$(this).addClass('current');
+	$(this).siblings('.filter').removeClass('current');
 });
-$('.filter').mouseout(function() {
-	$(this).children('.navListTwo').stop().slideUp();
-	$(this).removeClass('current');
-})
 
 $('.tabItemList li').click(
 		function() {
