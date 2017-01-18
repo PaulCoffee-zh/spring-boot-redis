@@ -1,0 +1,97 @@
+package com.akcomejf.cube.tags;
+
+import javax.servlet.jsp.JspTagException;
+import javax.servlet.jsp.tagext.BodyTagSupport;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.akcomejf.uranus.dto.DimNodeDTO;
+import com.akcomejf.uranus.service.DimApiService;
+
+/**
+ * 将字典值翻译成中文标签
+ * @author D.D
+ * @date 2014-8-11 下午02:28:46
+ */
+public class ToCnTag extends BodyTagSupport {
+
+    /**
+     * 维度中的Key, 必须有值
+     */
+    private String key;
+
+    /**
+     * 值
+     */
+    private String value;
+
+    private String var;
+
+    private DimApiService dimService;
+
+    @Override
+    public int doEndTag() throws JspTagException {
+        try {
+            if(dimService == null){
+                ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(pageContext.getServletContext());
+                dimService =  ctx.getBean(DimApiService.class);
+            }
+            DimNodeDTO dimNode = dimService.findByTreeNoAndNodeNo(key, value);
+
+            StringBuilder out = new StringBuilder();
+            out.append(dimNode.getNodeName());
+            pageContext.getOut().write(out.toString());
+
+            // 将数据设置到pageContext
+            if(!isNull(var)){
+                pageContext.setAttribute(var, dimNode);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return EVAL_PAGE;
+    }
+
+    private boolean isNull(String obj){
+        if(obj != null && !"".equals(obj)){
+            return false;
+        }
+        return true;
+    }
+
+
+    public String getVar() {
+        return var;
+    }
+
+    public void setVar(String var) {
+        this.var = var;
+    }
+
+    public DimApiService getDimService() {
+        return dimService;
+    }
+
+    public void setDimService(DimApiService dimService) {
+        this.dimService = dimService;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+
+}

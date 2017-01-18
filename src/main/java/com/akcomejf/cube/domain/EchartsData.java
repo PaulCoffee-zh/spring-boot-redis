@@ -17,9 +17,29 @@ public class EchartsData {
 	private Map<String, Map<String, List<Long>>> map;
 	
 	private Map<String, Map<String, List<Double>>> investMap;
+	
+	private Map<String, Map<String, Long>> regSumMap;
+	
+	private Map<String, Map<String, Double>> investSumMap;
 
 	private Integer sum;
 	
+	public Map<String, Map<String, Long>> getRegSumMap() {
+		return regSumMap;
+	}
+
+	public void setRegSumMap(Map<String, Map<String, Long>> regSumMap) {
+		this.regSumMap = regSumMap;
+	}
+
+	public Map<String, Map<String, Double>> getInvestSumMap() {
+		return investSumMap;
+	}
+
+	public void setInvestSumMap(Map<String, Map<String, Double>> investSumMap) {
+		this.investSumMap = investSumMap;
+	}
+
 	public Map<String, Map<String, List<Double>>> getInvestMap() {
 		return investMap;
 	}

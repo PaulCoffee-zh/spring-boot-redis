@@ -5,5 +5,4 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="ak" uri="/WEB-INF/tld/ak.tld" %>
-
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>

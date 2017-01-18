@@ -14,6 +14,9 @@
   <title>登录页面 - 网站后台系统</title>
   <!-- css & js  -->
   <%@ include file="/common/header.jsp"%>
+  	<link rel="stylesheet" href="${ctx }/assets/css/ace.min.css"/>
+	<link rel="stylesheet" href="${ctx }/assets/css/ace-rtl.min.css"/>
+	<link rel="stylesheet" href="${ctx }/assets/css/ace-skins.min.css"/>
 </head>
 
 <body class="login-layout">

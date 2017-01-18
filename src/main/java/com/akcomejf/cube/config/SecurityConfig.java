@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         // 设置不拦截规则
         //web.ignoring().antMatchers("/resources/**", "/js/**", "/images/**", "/css/**", "/assets/**", "/**.woff", "/**.ico", "/login", "/**.jsp");
-        web.ignoring().antMatchers("/", "/**.jsp", "/*.ico", "/js/**", "/images/**", "/css/**", "/assets/**","/api/**","/wdzj/**");
+        web.ignoring().antMatchers("/", "/**.jsp", "/*.ico", "/js/**", "/images/**", "/css/**", "/assets/**","/api/**");
     }
 
     @Override
@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 关闭csrf
                 .csrf().disable()
                 //允许所有用户访问”/login”
-                .authorizeRequests().antMatchers("/login","/promotion/**").permitAll()
+                .authorizeRequests().antMatchers("/login").permitAll()
                 //其他地址的访问均需验证权限
                 .anyRequest().authenticated()
                 .and()

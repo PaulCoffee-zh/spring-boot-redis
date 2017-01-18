@@ -39,7 +39,7 @@ public class IndexController {
 
 	@RequestMapping(value = { "/", "/{[a-z]+}" })
 	public String toIndex() {
-		return "redirect:/index.html";
+		return "redirect:/regData/regChart.html";
 	}
 
 	@RequestMapping("/index.html")
@@ -54,7 +54,7 @@ public class IndexController {
 		if (isAjax) {
 			resp.setStatus(401);
 		}
-		return "login";
+		return "/login";
 	}
 
 	@RequestMapping("/404")

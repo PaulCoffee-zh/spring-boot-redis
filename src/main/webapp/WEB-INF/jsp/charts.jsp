@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ include file="/common/config.jsp"%>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -31,35 +32,33 @@ body {
 			<h1>易数魔方</h1>
 			<div class="filter current">
 				<div class="navListOne">
-					<a>一级菜单</a>
+					<a>数据分析</a>
 				</div>
 				<ul class="navListTwo">
-					<li><a>二级菜单</a></li>
-					<li><a>二级菜单</a></li>
-					<li><a>二级菜单</a></li>
+					<li><a href="${ctx }/regData/regChart.html ">推广汇总</a></li>
+<!-- 					<li><a>二级菜单</a></li> -->
+<!-- 					<li><a>二级菜单</a></li> -->
 				</ul>
 			</div>
-			<div class="filter">
-				<div class="navListOne">
-					<a>一级菜单</a>
-				</div>
-				<ul class="navListTwo">
-					<li><a>二级菜单</a></li>
-					<li><a>二级菜单</a></li>
-					<li><a>二级菜单</a></li>
-				</ul>
-			</div>
+<!-- 			<div class="filter"> -->
+<!-- 				<div class="navListOne"> -->
+<!-- 					<a>一级菜单</a> -->
+<!-- 				</div> -->
+<!-- 				<ul class="navListTwo"> -->
+<!-- 					<li><a>二级菜单</a></li> -->
+<!-- 					<li><a>二级菜单</a></li> -->
+<!-- 					<li><a>二级菜单</a></li> -->
+<!-- 				</ul> -->
+<!-- 			</div> -->
 		</div>
 		<div class="mainContent right">
 			<div class="Nav">
 				<ul class="NavList right">
-					<li><a>用户管理</a></li>
-					<li><a>修改密码</a></li>
-					<li><a>注销</a></li>
+					<li><a href="<c:url value='/logout' />">注销</a></li>
 					<li><a>刷新</a></li>
 				</ul>
 				<div class="userName right">
-					欢迎光临，<span>管理员</span>
+					欢迎光临，<span><sec:authentication property="principal.fullname"/></span>
 				</div>
 			</div>
 			<div class="prefilter">
@@ -87,11 +86,11 @@ body {
 			<div class="chartlistCon">
 				<div class="tabItem">
 					<ul class="tabItemList">
-						<li class="active">图表</li>
-						<li>列表</li>
+						<li>图表</li>
+						<li  class="active">列表</li>
 					</ul>
 					<div class="contentBox">
-						<div class="contentBox-list contentShow charBox-list">
+						<div class="contentBox-list charBox-list">
 							<div class="topBox clearfix">
 								<div class="sidebarNum left">
 									<ul class="numItemList">
@@ -151,7 +150,9 @@ body {
 								</div>
 							</div>
 						</div>
-						<div class="contentBox-list listBox-list">列表内容</div>
+						<div class="contentBox-list contentShow listBox-list" >
+						<div id="tableDiv"></div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -492,6 +493,28 @@ body {
 					series : seriesArr
 				});
 		}
+// 		function initTable(map) {
+		    $("#tableDiv").empty();
+		    var table = "<table border='0' cellspacing='1' cellpadding='0' class='bordered' style='margin-right: 10px;'>"
+		    var th = "<tr><th>时间</th>";
+		    // head名称
+		    $.each(mapS.seriesMap, function(key, values) {
+		        th += "<th>" + key + "</th>";
+		    });
+		    th += "<tr>";
+		    // 时间+数据
+		    var td = ""
+		    var dateList = mapS.dateList;
+		    for (var i = 0; i < dateList.length; i++) {
+		        var _td = "<tr><td>" + dateList[i] + "</td>";
+		        $.each(map.seriesMap, function(key, values) {
+		            _td += "<td>" + values[i] + "</td>";
+		        });
+		        td += _td + "</tr>";
+		    }
+		    table += th + td;
+		    $("#tableDiv").append(table + "</table>");
+// 		}
 	</script>
 	<script type="text/javascript" src="${ctx }/js/pieCharts.js"></script>
 </body>

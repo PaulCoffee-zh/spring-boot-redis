@@ -29,7 +29,7 @@ window.jQuery || document.write("<script src='${ctx }/assets/js/jquery-1.10.2.mi
 </script>
 <script src="${ctx }/assets/js/bootstrap.min.js"></script>
 <script src="${ctx }/assets/js/typeahead-bs2.min.js"></script>
-<script src="${ctx }/assets/my97/WdatePicker.js"></script>
+
 <!-- page specific plugin scripts -->
 
 <script src="${ctx }/assets/js/jquery-ui-1.10.3.full.min.js"></script>
@@ -44,5 +44,3 @@ window.jQuery || document.write("<script src='${ctx }/assets/js/jquery-1.10.2.mi
 
 <!-- common -->
 <script src="${ctx }/js/common.js"></script>
-
-<script src="${ctx}/assets/js/chosen.jquery.min.js"></script>
