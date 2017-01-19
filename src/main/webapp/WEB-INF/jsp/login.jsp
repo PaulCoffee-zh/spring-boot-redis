@@ -31,16 +31,16 @@
             <h1>
               <img src="${ctx}/assets/images/logo@2x.png" />
               <span class="red">爱康金服</span>
-              <span class="white">网站后台系统</span>
+              <span class="white">易数魔方</span>
             </h1>
             <h4 class="blue">&copy; 爱康富罗纳金融信息服务（上海）有限公司</h4>
           </div>
 
           <div class="space-6"></div>
 
-          <div class="position-relative">
-            <div id="login-box" class="login-box visible widget-box no-border">
-              <div class="widget-body">
+          <div class="position-relative" >
+            <div id="login-box" class="login-box visible widget-box no-border" >
+              <div class="widget-body" style="background-color: #1d2024;">
                 <div class="widget-main">
                   <h4 class="header blue lighter bigger">
                     <i class="icon-coffee green"></i>

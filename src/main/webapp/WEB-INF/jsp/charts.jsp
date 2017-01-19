@@ -86,11 +86,11 @@ body {
 			<div class="chartlistCon">
 				<div class="tabItem">
 					<ul class="tabItemList">
-						<li>图表</li>
-						<li  class="active">列表</li>
+						<li class="active">图表</li>
+						<li>列表</li>
 					</ul>
 					<div class="contentBox">
-						<div class="contentBox-list charBox-list">
+						<div class="contentBox-list contentShow charBox-list">
 							<div class="topBox clearfix">
 								<div class="sidebarNum left">
 									<ul class="numItemList">
@@ -150,8 +150,7 @@ body {
 								</div>
 							</div>
 						</div>
-						<div class="contentBox-list contentShow listBox-list" >
-						<div id="tableDiv"></div>
+						<div class="contentBox-list listBox-list">
 						</div>
 					</div>
 				</div>
@@ -250,7 +249,8 @@ body {
 			var endDate = $("#endDate").val();
 			$.post("${ctx}/regData/findByDate.json", {startDate:startDate,endDate:endDate}, function(msg){
 				if(msg.code == 200){
-					initLineCharts(msg.data);
+					initLineCharts(msg.data[0]);
+					initPieCharts(msg.data[0]);
 				}
 			}, "json");
 		}
@@ -447,6 +447,61 @@ body {
 			},
 			options: optionsInvestArr
 		});
+		function initPieCharts(map){
+			var optionsInvestArr = new Array();
+			$.each(map,function(key,values){
+				var sourceArr = new Array();
+				$.each(values,function(_key, _values){
+					var _sum = 0;
+					for(var x = 0 ; x < _values.length; x++){
+						_sum += _values[x];
+					}
+					var _sourceData ={
+						name:_key,
+						value:_sum
+					}
+					sourceArr.push(_sourceData);
+				});
+				var options = {
+						title: {text: key},
+						series:{data:sourceArr}
+				}
+				optionsInvestArr.push(options);
+			});
+			investPieChart.setOption({
+				baseOption: {
+					backgroundColor:'#24273e',
+					timeline: {
+			            axisType: 'category',
+			            autoPlay: false,
+			            data:legendArr,
+			            orient:'horizontal',
+			            padding: [1,1,100,20],
+			            label:{
+			            	position:'left',
+			            	normal:{
+			            		rotate:70,
+			            		interval:0,
+			            		position:50
+			            	}
+			            }
+			        },
+			        tooltip : {
+				        trigger: 'item',
+				        formatter: "{a} <br/>{b} : {c} ({d}%)"
+				    },
+				    series : [
+				        {
+				            name: '投资来源',
+				            type: 'pie',
+				            radius : '55%',
+				            center: ['50%', '50%']
+				        }
+				    ]
+				},
+				options: optionsInvestArr
+			});
+		}
 		function initLineCharts(map){
 			var seriesArr = new Array();
 			$.each(map.series, function(key, values){
@@ -493,28 +548,6 @@ body {
 					series : seriesArr
 				});
 		}
-// 		function initTable(map) {
-		    $("#tableDiv").empty();
-		    var table = "<table border='0' cellspacing='1' cellpadding='0' class='bordered' style='margin-right: 10px;'>"
-		    var th = "<tr><th>时间</th>";
-		    // head名称
-		    $.each(mapS.seriesMap, function(key, values) {
-		        th += "<th>" + key + "</th>";
-		    });
-		    th += "<tr>";
-		    // 时间+数据
-		    var td = ""
-		    var dateList = mapS.dateList;
-		    for (var i = 0; i < dateList.length; i++) {
-		        var _td = "<tr><td>" + dateList[i] + "</td>";
-		        $.each(map.seriesMap, function(key, values) {
-		            _td += "<td>" + values[i] + "</td>";
-		        });
-		        td += _td + "</tr>";
-		    }
-		    table += th + td;
-		    $("#tableDiv").append(table + "</table>");
-// 		}
 	</script>
 	<script type="text/javascript" src="${ctx }/js/pieCharts.js"></script>
 </body>
